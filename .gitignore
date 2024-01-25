@@ -1,0 +1,9 @@
+/manage.py
+/env
+/apk/migrations
+/apk/__pycache__
+/inventory/migrations
+/inventory/__pycache__
+/item_file
+/item_images
+/db.sqlite3
