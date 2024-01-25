@@ -82,3 +82,14 @@ class InventoryRequest(models.Model):
     pur_dispersed=models.BooleanField(default=False)
     def __str__(self):
         return self.user
+
+
+
+class PurchesOrder(models.Model):
+    item=models.ForeignKey(Item,on_delete=models.CASCADE)
+    quantity=models.IntegerField(default=0)
+    note=models.CharField(max_length=300)
+    # pur_branch=models.ForeignKey(Branch,on_delete=models.CASCADE)
+    file=models.FileField(blank=True,null=True,upload_to='item_file',validators=[FileExtensionValidator(allowed_extensions=['pdf','doc','docx']),validate_size])
+    inv_req=models.ForeignKey(InventoryRequest,on_delete=models.CASCADE)
+
