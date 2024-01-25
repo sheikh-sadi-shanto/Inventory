@@ -141,7 +141,7 @@ class DepartmentList(APIView):
         serializers=DepartmentSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
-            return Response({'msg':'created successful'},status=status.HTTP_400_BAD_REQUEST)
+            return Response({'msg':'creation done'},status=status.HTTP_400_BAD_REQUEST)
         return Response(serializers.errors,status=status.HTTP_201_CREATED)
     
 
@@ -161,5 +161,5 @@ class InventoryRequestList(APIView):
         serializers=InventoryRequest(data=request.data)
         if serializers.is_valid():
             serializers.save()
-            return Response({'msg':'created successful'},status=status.HTTP_400_BAD_REQUEST)
+            return Response({'msg':'create successful'},status=status.HTTP_400_BAD_REQUEST)
         return Response(serializers.errors,status=status.HTTP_201_CREATED)
