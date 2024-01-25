@@ -6,6 +6,7 @@ from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from apk.models import *
 from apk.serializer import *
+from apk.permission import IsOrdered
 # Create your views here.
 
 
@@ -158,7 +159,30 @@ class InventoryRequestList(APIView):
         return Response(serializers.data)
     
     def post(self,request):
-        serializers=InventoryRequest(data=request.data)
+        serializers=InventoryRequestSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response({'msg':'create successful'},status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializers.errors,status=status.HTTP_201_CREATED)
+    
+
+
+class PurchesOrderView(APIView):
+    
+    permission_classes=[IsOrdered]
+
+    def get(self,request,pk=None):
+        if pk is not None:
+            queryset=PurchesOrder.objects.get(id=pk)
+            serializers=PurchesOrderSerializer(queryset,many=False)
+            return Response(serializers.data)
+        
+        queryset=PurchesOrder.objects.all()
+        serializers=PurchesOrderSerializer(queryset,many=True)
+        return Response(serializers.data)
+    
+    def post(self,request):
+        serializers=PurchesOrderSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response({'msg':'create successful'},status=status.HTTP_400_BAD_REQUEST)

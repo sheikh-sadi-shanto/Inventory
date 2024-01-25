@@ -86,6 +86,7 @@ class InventoryRequest(models.Model):
 
 
 class PurchesOrder(models.Model):
+    # user=models.ForeignKey(User,on_delete=models.CASCADE)
     item=models.ForeignKey(Item,on_delete=models.CASCADE)
     quantity=models.IntegerField(default=0)
     note=models.CharField(max_length=300)

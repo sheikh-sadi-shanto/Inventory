@@ -51,3 +51,9 @@ class InventoryRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model=Department
         fields=('id','name','item','subitem','quantity','note','dispersed','pur_dispersed')
+
+
+class PurchesOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PurchesOrder
+        fields=('id','item','quantity','note','file')
