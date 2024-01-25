@@ -32,5 +32,5 @@ urlpatterns = [
     path('inventoryrequestlist/<int:pk>',InventoryRequestList.as_view()),
 
     path('purchesOrder',PurchesOrderView.as_view()),
-    # path('purchesOrder/<int:pk>',PurchesOrderView.as_view()),
+    path('purchesOrder/<int:pk>',PurchesOrderView.as_view()),
 ]
