@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 @receiver(post_save, sender=Item)
 def create_profile(sender, instance, created, **kwargs):
-    if created:
+    purche,created=PurchesOrder.objects.get_or_create(item=instance)
+    if not created:
         PurchesOrder.quantity+=1
         PurchesOrder.save()

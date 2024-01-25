@@ -81,7 +81,7 @@ class InventoryRequest(models.Model):
     dispersed=models.BooleanField(default=False)
     pur_dispersed=models.BooleanField(default=False)
     def __str__(self):
-        return self.user
+        return self.item
 
 
 
