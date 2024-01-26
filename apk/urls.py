@@ -33,4 +33,6 @@ urlpatterns = [
 
     path('purchesOrder',PurchesOrderView.as_view()),
     path('purchesOrder/<int:pk>',PurchesOrderView.as_view()),
+
+    path('myinventory',MyInventoryView.as_view()),
 ]

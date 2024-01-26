@@ -57,3 +57,10 @@ class PurchesOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model=PurchesOrder
         fields=('id','item','quantity','note','file')
+
+
+
+class MyInventorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PurchesOrder
+        fields=('id','item',)

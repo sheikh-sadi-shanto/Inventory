@@ -94,3 +94,6 @@ class PurchesOrder(models.Model):
     file=models.FileField(blank=True,null=True,upload_to='item_file',validators=[FileExtensionValidator(allowed_extensions=['pdf','doc','docx']),validate_size])
     inv_req=models.ForeignKey(InventoryRequest,on_delete=models.CASCADE)
 
+class MyInventory(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    item=models.CharField(max_length=400)

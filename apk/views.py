@@ -187,3 +187,11 @@ class PurchesOrderView(APIView):
             serializers.save()
             return Response({'msg':'create successful'},status=status.HTTP_400_BAD_REQUEST)
         return Response(serializers.errors,status=status.HTTP_201_CREATED)
+
+
+class MyInventoryView(APIView):
+
+    def get(self,request):
+        queryset=MyInventory.objects.all()
+        serializers=MyInventorySerializer(queryset,many=True)
+        return Response(serializers.data)
